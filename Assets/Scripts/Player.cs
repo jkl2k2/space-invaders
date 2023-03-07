@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject shot = Instantiate(bulletPrefab, shootingOffset.position, Quaternion.identity);
+            Instantiate(bulletPrefab, shootingOffset.position, Quaternion.identity);
         }
     }
     
@@ -27,5 +27,14 @@ public class Player : MonoBehaviour
         {
             transform.Translate(-0.2f, 0f, 0f);
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider2D)
+    {
+        if (!collider2D.gameObject.tag.Equals("EnemyBullet")) return;
+        
+        Debug.Log("You died!");
+        
+        gameObject.SetActive(false);
     }
 }

@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (isEnemy && !collider2D.gameObject.tag.Equals("Player"))
+        if (isEnemy && !collider2D.gameObject.tag.Equals("Player") && !collider2D.gameObject.tag.Equals("Catch"))
         {
             return;
         }

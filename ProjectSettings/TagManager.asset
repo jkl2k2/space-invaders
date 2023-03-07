@@ -13,6 +13,7 @@ TagManager:
   - CurrentScore
   - HighScore
   - Canvas
+  - Catch
   layers:
   - Default
   - TransparentFX

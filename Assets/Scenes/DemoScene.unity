@@ -886,7 +886,7 @@ GameObject:
   - component: {fileID: 901694598}
   m_Layer: 0
   m_Name: Bottom Catch
-  m_TagString: Untagged
+  m_TagString: Catch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1225,7 +1225,7 @@ GameObject:
   - component: {fileID: 1295728832}
   m_Layer: 0
   m_Name: Top Catch
-  m_TagString: Untagged
+  m_TagString: Catch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
