@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Spawner : MonoBehaviour
 {
@@ -17,6 +18,31 @@ public class Spawner : MonoBehaviour
 
     private float attackRate = 1f;
     
+    public TextMeshProUGUI highScore;
+
+    private void Awake()
+    {
+        highScore.SetText(PlayerPrefs.GetInt("highScore").ToString());
+        
+        string scoreString = "";
+        int highScoreSaved = PlayerPrefs.GetInt("highScore");
+
+        if (highScoreSaved < 10)
+        {
+            scoreString += "000";
+        } else if (highScoreSaved < 100)
+        {
+            scoreString += "00";
+        } else if (highScoreSaved < 1000)
+        {
+            scoreString += "0";
+        }
+
+        scoreString += highScoreSaved;
+        
+        highScore.SetText(scoreString);
+    }
+    
     private void Start()
     {
         InvokeRepeating(nameof(Attack), attackRate, attackRate);
@@ -26,8 +52,8 @@ public class Spawner : MonoBehaviour
             for (int col = 0; col < numCols; col++)
             {
                 Vector3 spawn = transform.position;
-                const float xMultiplier = 1f;
-                const float yMultiplier = 1f;
+                const float xMultiplier = 0.8f;
+                const float yMultiplier = 0.8f;
 
                 Instantiate(enemyPrefab[row], new Vector3((spawn.x - col * xMultiplier) + 5, spawn.y - row * yMultiplier, 0), Quaternion.identity, transform);
             }

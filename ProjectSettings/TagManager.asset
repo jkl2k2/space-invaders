@@ -10,6 +10,9 @@ TagManager:
   - Enemy4
   - PlayerBullet
   - EnemyBullet
+  - CurrentScore
+  - HighScore
+  - Canvas
   layers:
   - Default
   - TransparentFX
