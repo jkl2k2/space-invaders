@@ -8,11 +8,16 @@ public class Player : MonoBehaviour
 
     public Transform shootingOffset;
 
+    private GameObject recentBullet;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(bulletPrefab, shootingOffset.position, Quaternion.identity);
+            if (recentBullet == null || !recentBullet.activeInHierarchy)
+            {
+                recentBullet = Instantiate(bulletPrefab, shootingOffset.position, Quaternion.identity);
+            }
         }
     }
     
