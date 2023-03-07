@@ -6,13 +6,13 @@ public class Player : MonoBehaviour
 {
   public GameObject bullet;
 
-  public Transform shottingOffset;
+  public Transform shootingOffset;
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-              GameObject shot = Instantiate(bullet, shottingOffset.position, Quaternion.identity);
+              GameObject shot = Instantiate(bullet, shootingOffset.position, Quaternion.identity);
         }
     }
 }
