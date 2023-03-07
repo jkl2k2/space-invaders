@@ -12,8 +12,10 @@ public class Spawner : MonoBehaviour
             for (int col = 0; col < 11; col++)
             {
                 Vector3 spawn = transform.position;
+                const float xOffset = 0.11f;
+                const float yOffset = 0.2f;
 
-                Instantiate(enemyPrefab, new Vector3(spawn.x - (spawn.x * col * 0.12f), spawn.y - spawn.y * row * 0.25f, 0), Quaternion.identity);
+                Instantiate(enemyPrefab, new Vector3(spawn.x - (spawn.x * col * xOffset), spawn.y - spawn.y * row * yOffset, 0), Quaternion.identity);
             }
         }
     }

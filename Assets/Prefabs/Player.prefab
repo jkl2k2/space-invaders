@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 2457785739244962049, guid: d4511b14daaa37c468a74ed386b2583f, type: 3}
-  shottingOffset: {fileID: 8125335893176967482}
+  shootingOffset: {fileID: 0}
 --- !u!1 &6424274885353042238
 GameObject:
   m_ObjectHideFlags: 0
