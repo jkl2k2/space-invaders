@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void OnCollisionEnter2D(Collision2D collision)
+    
+    void OnTriggerEnter2D(Collider2D collider2D)
     {
+        if (!collider2D.gameObject.tag.Equals("PlayerBullet")) return;
+        
         Debug.Log("Ouch!");
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

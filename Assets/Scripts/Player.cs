@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public GameObject bullet;
+    public GameObject bulletPrefab;
 
     public Transform shootingOffset;
 
@@ -12,18 +12,18 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject shot = Instantiate(bullet, shootingOffset.position, Quaternion.identity);
+            GameObject shot = Instantiate(bulletPrefab, shootingOffset.position, Quaternion.identity);
         }
     }
     
     private void FixedUpdate()
     {
         float horizontalValue = Input.GetAxis("Horizontal");
-
-        if (horizontalValue > 0)
+        
+        if (horizontalValue > 0 && transform.position.x < 8.6)
         {
             transform.Translate(0.2f, 0f, 0f);
-        } else if (horizontalValue < 0)
+        } else if (horizontalValue < 0 && transform.position.x > -8.6)
         {
             transform.Translate(-0.2f, 0f, 0f);
         }
