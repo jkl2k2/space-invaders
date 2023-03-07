@@ -14,6 +14,8 @@ TagManager:
   - HighScore
   - Canvas
   - Catch
+  - Barrier
+  - SpecialDespawn
   layers:
   - Default
   - TransparentFX

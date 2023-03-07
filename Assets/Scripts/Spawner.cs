@@ -6,6 +6,7 @@ using TMPro;
 public class Spawner : MonoBehaviour
 {
     public GameObject[] enemyPrefab;
+    public GameObject specialEnemyPrefab;
     public GameObject enemyBulletPrefab;
 
     private const int numRows = 5;
@@ -17,6 +18,7 @@ public class Spawner : MonoBehaviour
     private int numKilled;
 
     private float attackRate = 1f;
+    private float spawnRate = 1f;
     
     public TextMeshProUGUI highScore;
 
@@ -46,6 +48,7 @@ public class Spawner : MonoBehaviour
     private void Start()
     {
         InvokeRepeating(nameof(Attack), attackRate, attackRate);
+        InvokeRepeating(nameof(SpawnSpecial), spawnRate, spawnRate);
         
         for (int row = 0; row < numRows; row++)
         {
@@ -60,6 +63,16 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    private void SpawnSpecial()
+    {
+        float rand = Random.value;
+
+        if (rand < 0.2f)
+        {
+            Instantiate(specialEnemyPrefab, new Vector3(-10, 4, 0), Quaternion.identity);
+        }
+    }
+    
     private void Update()
     {
         int killCount = 0;
