@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
             if (recentBullet == null || !recentBullet.activeInHierarchy)
             {
                 recentBullet = Instantiate(bulletPrefab, shootingOffset.position, Quaternion.identity);
+                GetComponents<AudioSource>()[0].Play();
             }
         }
     }
@@ -40,6 +41,14 @@ public class Player : MonoBehaviour
         
         Debug.Log("You died!");
         
-        gameObject.SetActive(false);
+        GetComponents<AudioSource>()[1].Play();
+
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        
+        GetComponent<ParticleSystem>().Play();
+
+        GameObject.FindWithTag("GameManager").GetComponent<AudioSource>().Stop();
+        GameObject.FindWithTag("GameManager").GetComponent<SceneSwitcher>().LoadCreditsScene();
     }
 }

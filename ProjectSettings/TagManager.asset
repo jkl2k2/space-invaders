@@ -16,6 +16,7 @@ TagManager:
   - Catch
   - Barrier
   - SpecialDespawn
+  - GameManager
   layers:
   - Default
   - TransparentFX

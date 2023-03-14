@@ -19,6 +19,7 @@ public class Spawner : MonoBehaviour
 
     private float attackRate = 1f;
     private float spawnRate = 1f;
+    private float spawnProbability = 0.1f;
     
     public TextMeshProUGUI highScore;
 
@@ -67,7 +68,7 @@ public class Spawner : MonoBehaviour
     {
         float rand = Random.value;
 
-        if (rand < 0.2f)
+        if (rand < spawnProbability)
         {
             Instantiate(specialEnemyPrefab, new Vector3(-10, 4, 0), Quaternion.identity);
         }
@@ -146,6 +147,7 @@ public class Spawner : MonoBehaviour
             if (rand < 1.0f / (numRows * numCols - numKilled))
             {
                 Instantiate(enemyBulletPrefab, enemy.GetChild(0).position, Quaternion.identity);
+                GetComponent<AudioSource>().Play();
                 break;
             }
         }

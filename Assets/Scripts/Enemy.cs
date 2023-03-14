@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider2D)
     {
         if (!collider2D.gameObject.tag.Equals("PlayerBullet")) return;
-        
+
         string scoreString = "";
         int newScore = int.Parse(score.text) + value;
         int currentHighScore = int.Parse(highScore.text);
@@ -44,7 +44,20 @@ public class Enemy : MonoBehaviour
             highScore.SetText(scoreString);
             PlayerPrefs.SetInt("highScore", newScore);
         }
+
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+
+        GetComponent<AudioSource>().Play();
         
+        GetComponent<ParticleSystem>().Play();
+        
+        StartCoroutine(DisableEnemyDelayed());
+    }
+
+    IEnumerator DisableEnemyDelayed()
+    {
+        yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);
     }
 }

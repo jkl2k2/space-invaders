@@ -34,6 +34,8 @@ public class SpecialEnemy : MonoBehaviour
         
         if (!collider2D.gameObject.tag.Equals("PlayerBullet")) return;
         
+        GetComponent<AudioSource>().Play();
+        
         string scoreString = "";
         int newScore = int.Parse(score.text) + value;
         int currentHighScore = int.Parse(highScore.text);
@@ -56,6 +58,15 @@ public class SpecialEnemy : MonoBehaviour
             PlayerPrefs.SetInt("highScore", newScore);
         }
         
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+
+        StartCoroutine(DisableEnemyDelayed());
+    }
+
+    IEnumerator DisableEnemyDelayed()
+    {
+        yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);
     }
 }
